@@ -1,11 +1,19 @@
-function ThemeToggle() {
+import React, { useState } from 'react';
+
+const ThemeToggle = () => {
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    document.documentElement.classList.toggle('dark', newTheme === 'dark');
+  };
+
   return (
-    <div className="p-2">
-      <button className="px-4 py-2 bg-gray-800 text-white rounded">
-        Toggle Theme
-      </button>
-    </div>
+    <button onClick={toggleTheme} className="p-2 rounded bg-gray-200 dark:bg-gray-800 dark:text-white cursor-pointer">
+      {theme === 'dark' ? '🌞 Light Mode' : '🌜 Dark Mode'}
+    </button>
   );
 }
 
-export default ThemeToggle
+export default ThemeToggle;

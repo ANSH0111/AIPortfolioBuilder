@@ -13,6 +13,7 @@ function App() {
   const[formData,setFormData] = useState(()=>{
     const savedData = localStorage.getItem("portfolioData");
     return savedData ? JSON.parse(savedData) : {
+      profileImage: "",
       name: "",
       bio: "",
       skills: [],
@@ -32,9 +33,11 @@ function App() {
 
   return (
     <>
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      <ThemeToggle />
+    <div className="min-h-screen bg-gray-300 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
+      <div className="flex justify-between items-center text-gray-800 p-4 dark:border-gray-700">
+        <Header />
+        <ThemeToggle />
+      </div>
 
       <main className="flex flex-col lg:flex-row flex-grow">
         <FormPanel formData = {formData} setFormData= {setFormData}/>
