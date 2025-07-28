@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useEffect } from "react";
 //Importing Components
 
 import Header from "./components/Header";
@@ -9,17 +10,26 @@ import Footer from "./components/Footer"
 
 //Main App Component
 function App() {
-  const[formData,setFormData] = useState({
-    name: "",
-    bio: "",
-    skills: [],
-    projects: [],
-    social: {
-      github: "",
-      linkedin: "",
-      twitter: ""
+  const[formData,setFormData] = useState(()=>{
+    const savedData = localStorage.getItem("portfolioData");
+    return savedData ? JSON.parse(savedData) : {
+      name: "",
+      bio: "",
+      skills: [],
+      projects: [],
+      social: {
+        github: "",
+        linkedin: "",
+        twitter: ""
+      }
     }
   });
+
+
+  useEffect(() => {
+    localStorage.setItem("portfolioData", JSON.stringify(formData));
+  }, [formData]);
+
   return (
     <>
     <div className="min-h-screen flex flex-col">
@@ -28,7 +38,7 @@ function App() {
 
       <main className="flex flex-col lg:flex-row flex-grow">
         <FormPanel formData = {formData} setFormData= {setFormData}/>
-        <PreviewPanel formdata = {formData}/>
+        <PreviewPanel formData = {formData}/>
       </main>
 
       <Footer />

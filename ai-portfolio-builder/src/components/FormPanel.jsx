@@ -58,6 +58,95 @@ function FormPanel({ formData, setFormData }) {
             }
           />
         </div>
+        {/* Skills */}
+        <div>
+          <label className="block font-medium mb-1">Skills</label>
+          <div className="flex gap-2 flex-wrap">
+            {formData.skills.map((skill, index) => (
+              <span key={index} className="bg-blue-100 px-2 py-1 rounded-full">
+                {skill}
+                <button
+                  className="ml-1 text-red-500"
+                  onClick={() =>
+                    setFormData({
+                      ...formData,
+                      skills: formData.skills.filter((_, i) => i !== index),
+                    })
+                  }
+                >
+                  ×
+                </button>
+              </span>
+            ))}
+          </div>
+          <input
+            type="text"
+            placeholder="Type a skill and press Enter"
+            className="w-full border rounded px-3 py-2 mt-2"
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && e.target.value.trim()) {
+                e.preventDefault();
+                setFormData({
+                  ...formData,
+                  skills: [...formData.skills, e.target.value.trim()],
+                });
+                e.target.value = "";
+              }
+            }}
+          />
+        </div>
+        {/* Projects */}
+        {/* Projects */}
+        <div className="mt-4">
+          <label className="block font-medium mb-1">Projects</label>
+          {formData.projects.map((project, index) => (
+            <div key={index} className="border p-2 mb-2 rounded">
+              <input
+                type="text"
+                placeholder="Project Title"
+                className="w-full border rounded px-2 py-1 mb-1"
+                value={project.title}
+                onChange={(e) => {
+                  const newProjects = [...formData.projects];
+                  newProjects[index].title = e.target.value;
+                  setFormData({ ...formData, projects: newProjects });
+                }}
+              />
+              <textarea
+                placeholder="Project Description"
+                className="w-full border rounded px-2 py-1"
+                value={project.description}
+                onChange={(e) => {
+                  const newProjects = [...formData.projects];
+                  newProjects[index].description = e.target.value;
+                  setFormData({ ...formData, projects: newProjects });
+                }}
+              />
+              <button
+                className="text-sm text-red-600 mt-1"
+                onClick={() => {
+                  const newProjects = formData.projects.filter((_, i) => i !== index);
+                  setFormData({ ...formData, projects: newProjects });
+                }}
+              >
+                Remove
+              </button>
+            </div>
+          ))}
+          <button
+            className="mt-2 px-3 py-1 bg-green-600 text-white rounded"
+            onClick={() =>
+              setFormData({
+                ...formData,
+                projects: [...formData.projects, { title: "", description: "" }],
+              })
+            }
+          >
+            + Add Project
+          </button>
+        </div>
+
+
       </div>
     </section>
   );
