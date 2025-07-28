@@ -1,8 +1,12 @@
+import { motion } from "framer-motion";
+
 function PreviewPanel({ formData }) {
   const { name, bio, social } = formData;
   return (
     <>
-      <section className="p-4 w-full lg:w-1/2 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 transition-colors duration-300">
+      <motion.section className="p-4 w-full lg:w-1/2 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 transition-colors duration-300" initial={{ opacity: 0, x: 50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5 }} >
         <h2 className="text-xl font-semibold mb-4">Live Preview</h2>
 
         {formData.profileImage && (
@@ -57,7 +61,7 @@ function PreviewPanel({ formData }) {
             ))}
           </ul>
         </div>
-      </section>
+      </motion.section>
 
     </>
   );

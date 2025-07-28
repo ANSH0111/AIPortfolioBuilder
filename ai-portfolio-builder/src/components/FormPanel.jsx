@@ -38,7 +38,7 @@ function FormPanel({ formData, setFormData }) {
         {/* Full Name */}
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Full Name</label>
-          <input
+          <input autoFocus
             type="text"
             name="name"
             className="w-full border border-gray-500 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded px-3 py-2"
