@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 function FormPanel({ formData, setFormData }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -180,6 +182,34 @@ function FormPanel({ formData, setFormData }) {
           </button>
         </div>
       </div>
+      <div className="flex flex-wrap gap-4 mt-4">
+        <button
+          onClick={() => {
+            localStorage.removeItem("portfolioData");
+            setFormData({
+              name: "",
+              bio: "",
+              skills: [],
+              projects: [],
+              profileImage: "",
+              social: { github: "", linkedin: "", twitter: "" },
+            });
+          }}
+          className="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 cursor-pointer"
+        >
+          Reset
+        </button>
+        <button
+          onClick={() => {
+            localStorage.setItem("portfolioData", JSON.stringify(formData));
+            alert("Saved successfully!");
+          }}
+          className="mt-4 ml-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 cursor-pointer"
+        >
+          Save
+        </button>
+      </div>
+
     </section>
 
   );

@@ -26,8 +26,8 @@ function PreviewPanel({ formData }) {
           </p>
 
           <div className="mt-4 space-y-2 text-sm text-gray-600 dark:text-gray-400">
-            {social.github && <p>🔗 GitHub: {social.github}</p>}
-            {social.linkedin && <p>🔗 LinkedIn: {social.linkedin}</p>}
+            {social.github && <p><a href={social.github} target="_blank">🔗 GitHub: {social.github}</a></p>}
+            {social.linkedin && <p><a href={social.linkedin} target="_blank">🔗 LinkedIn: {social.linkedin}</a></p>}
           </div>
         </div>
 
