@@ -17,7 +17,7 @@ function PreviewPanel({ formData }) {
           />
         )}
 
-        <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded shadow">
+        <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded shadow transition-all duration-300">
           <h1 className="text-2xl font-bold text-blue-700 dark:text-blue-400">
             {name || "Your Name"}
           </h1>

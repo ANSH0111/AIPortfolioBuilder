@@ -33,8 +33,8 @@ function App() {
 
   return (
     <>
-    <div className="min-h-screen bg-gray-300 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
-      <div className="flex justify-between items-center text-gray-800 p-4 dark:border-gray-700">
+    <div className="min-h-screen bg-gray-300 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+      <div className="flex justify-between items-center bg-gray-300 dark:bg-gray-900 text-gray-800 p-4 dark:border-gray-700 sticky top-0 left-0 right-0 z-10 transition-colors duration-300">
         <Header />
         <ThemeToggle />
       </div>
